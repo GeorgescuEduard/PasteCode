@@ -1,0 +1,28 @@
+<app-list-controller></app-list-controller>
+<div class="container" style="margin-top:70px;">
+  <div class="row">
+    <div class="col-9">
+      <p><b>{{service.Version.Name}}</b> </p>
+    </div>
+    <div class="col-3 text-right">
+      <p><b>{{service.Version.Date | date: "dd MMM yyyy HH:mm"}}</b></p>
+    </div>
+  </div>
+  <hr class="mt-2 mb-2">
+  <p class="mb-2">{{service.Version.Description}}</p>
+  <div class="card mb-5">
+    <div class="card-header">
+      <div class="row">
+        <p class="col-2"><b>{{service.Version.Syntax}}</b></p>
+        <div class="col text-right">
+          <button (click)="service.restoreVersion(version)" class="btn btn-success my-2 my-sm-0 mr-1"
+            style="color: white;" type="submit">Restore</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <pre><code class="hljs">{{service.Version.Content}}</code></pre>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

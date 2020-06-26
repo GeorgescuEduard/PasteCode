@@ -1,0 +1,37 @@
+<app-list-controller></app-list-controller>
+<div class="row mb-2" style="margin-top: 60px; justify-content: center;">
+  <div class="input-group col-2">
+    <input type="text" name="Search" style="width: 100%; box-shadow: none;
+    border: none;
+    border-bottom: 2px solid rgb(103,107,112);
+    border-radius: 0px" class="form-control" placeholder="Search" required>
+  </div>
+</div>
+<table class="table mb-5">
+  <thead>
+    <tr>
+      <th align="left">File Name</th>
+      <th align="center" class="text-center">Modified</th>
+      <th align="center" class="text-center">Syntax</th>
+      <th align="center" class="text-center">Expiration Date</th>
+      <th align="right"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of service.list | paginate: service.config">
+      <td align="left" (click)="fileView(file)">{{file.Name}}</td>
+      <td align="center" (click)="fileView(file)">{{file.LastModified | date: "dd MMM yyyy HH:mm"}}</td>
+      <td align="center"><a style="color: rgb(33,153,232);" (click)="selectSyntax(file)">{{file.Syntax}}</a></td>
+      <td align="center" (click)="fileView(file)" *ngIf="file.ExpirationDate !=null;">{{file.ExpirationDate | date: "dd MMM yyyy HH:mm"}}</td>
+        <td align="center" (click)="fileView(file)" *ngIf="file.ExpirationDate === null;">Never</td>
+      <td align="right">
+        <i class="far fa-trash-alt fa-lg text-danger" (click)="this.service.onDelete(file.FileId)"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="justify-content: center;">
+  <pagination-controls (pageChange)="pageChanged($event)" style="position: absolute; bottom:30px; width:100%;"
+    class="text-center"></pagination-controls>
+</div>
+<app-footer></app-footer>

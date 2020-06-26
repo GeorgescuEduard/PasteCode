@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="login-heading mb-4">Sign In!</h3>
+                            <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmitRegister()">
+                                <div class="row">
+                                    <div class="input-group">
+                                        <div class="col-6">
+                                            <div class="form-label-group">
+                                                <input type="text" class="form-control" id="FirstName" name="FirstName"
+                                                    placeholder="Frist name" formControlName="FirstName">
+                                                <label for="FirstName">First name</label>
+                                                <label class="text-danger"
+                                                    *ngIf="service.formModel.get('FirstName').touched && service.formModel.get('FirstName').errors?.minlength">First
+                                                    name to short.</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-label-group">
+                                                <input type="text" class="form-control" id="LastName" name="LastName"
+                                                    placeholder="Last name" formControlName="LastName">
+                                                <label for="LastName">Last name</label>
+                                                <label class="text-danger"
+                                                    *ngIf="service.formModel.get('LastName').touched && service.formModel.get('LastName').errors?.minlength">Last
+                                                    name to short.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input type="text" class="form-control" id="UserName" name="UserName"
+                                        formControlName="UserName" placeholder="Username" required>
+
+                                    <label for="UserName">Username</label>
+
+                                    <label for="UserName" class="text-danger"
+                                        *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.minlength">Username
+                                        to short.</label>
+                                    <label for="UserName" class="text-danger"
+                                        *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.pattern && !service.formModel.get('UserName').errors?.minlength">
+                                        Username is invalid.</label>
+
+                                </div>
+                                <div class="form-label-group">
+                                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Email"
+                                        formControlName="Email" required>
+                                    <label for="Email">Email</label>
+                                    <label class="text-danger"
+                                        *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">
+                                        Email is invalid.</label>
+                                    <label class="text-danger"
+                                        *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.pattern">
+                                        Email is invalid.</label>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input (keypress)="this.service.numberOnly($event)" type="text" class="form-control"
+                                        id="PhoneNumber" name="PhoneNumber" placeholder="Phone number"
+                                        formControlName="PhoneNumber" minlength="10" maxlength="16" required>
+                                    <label for="PhoneNumber">Phone number</label>
+                                </div>
+
+                                <div formGroupName="Passwords">
+                                    <div class="form-label-group">
+                                        <input type="password" class="form-control" id="Password" name="Password"
+                                            placeholder="Password" formControlName="Password" required>
+                                        <label for="Password">Password</label>
+                                        <label class="text-danger"
+                                            *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">
+                                            Password is to short.</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="password" class="form-control" id="ConfirmPassword"
+                                            name="ConfirmPassword" placeholder="Confirm password"
+                                            formControlName="ConfirmPassword" required>
+                                        <label for="ConfirmPassword">Confirm password</label>
+                                        <label class="text-danger"
+                                            *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm
+                                            password
+                                            doesn't match.</label>
+                                    </div>
+                                </div>
+                                <button type="submit" [disabled]="!service.formModel.valid"
+                                    class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign
+                                    In</button>
+                                <div class="text-center">
+                                    <a class="small" (click)="this.service.onLoginRedirect()">Already have an
+                                        account?</a></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

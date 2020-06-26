@@ -1,2 +1,2 @@
-# PasteCode
- A paste server developed using ASP.NET Core MVC and Angular
+# Paste Server
+ Paste Server with ASP .NET Core MVC and Angular

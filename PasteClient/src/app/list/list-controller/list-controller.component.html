@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(33,153,232)">
+  <a class="navbar-brand text-white" (click)="this.navigateToHome()">PasteCode</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <button *ngIf="token != null" (click)="this.navigateToNew()" class="btn btn-success my-2 my-sm-0" style="color: white;" type="submit"><i style="color: white;" class="fas fa-plus"></i> New File</button>
+      <li class="nav-item">
+        <a *ngIf="token != null" class="nav-link text-white" (click)="this.navigateToHome()">My Files</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="token != null" class="nav-link text-white" (click)="this.navigateToNew()">Manage Account</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <a *ngIf="token != null" class="nav-link text-white" (click)="this.service.onLogout()"><i style="color: white;"class="fas fa-sign-in-alt fa-lg"></i></a>
+        <a *ngIf="token === null" class="nav-link text-white" (click)="this.navigateToHome()"><i style="color: white;"class="fas fa-sign-in-alt fa-lg"></i><b> Login</b></a>
+    </form>
+  </div>
+</nav>

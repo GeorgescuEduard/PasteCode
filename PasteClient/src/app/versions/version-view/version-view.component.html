@@ -1,0 +1,20 @@
+<app-list-controller></app-list-controller>
+<div class="table-responsive-lg">
+  <table class="table mb-5" style="margin-top: 56px;">
+    <thead>
+      <tr>
+        <th align="left">Version</th>
+        <th align="center" class="text-center">Date</th>
+        <th align="center" class="text-center">Syntax</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let version of service.VersionList">
+        <td align="left" (click)="populateForm(version)">{{version.VersionTag}}</td>
+        <td align="center" (click)="populateForm(version)">{{version.Date | date: "dd MMM yyyy HH:mm"}}</td>
+        <td align="center" (click)="populateForm(version)">{{version.Syntax}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>
