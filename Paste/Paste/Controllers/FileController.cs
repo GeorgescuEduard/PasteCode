@@ -126,7 +126,7 @@ namespace Paste.Controllers
             _context.File.Add(file);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFile", new { id = file.FileId }, file);
+            return Ok();
         }
 
         // DELETE: api/File/5

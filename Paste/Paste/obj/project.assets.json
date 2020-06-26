@@ -13438,11 +13438,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Paste-Server-master\\Paste\\Paste\\Paste.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\PasteCode\\Paste\\Paste\\Paste.csproj",
       "projectName": "Paste",
-      "projectPath": "C:\\Users\\User\\Desktop\\Paste-Server-master\\Paste\\Paste\\Paste.csproj",
+      "projectPath": "C:\\Users\\User\\Documents\\GitHub\\PasteCode\\Paste\\Paste\\Paste.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Paste-Server-master\\Paste\\Paste\\obj\\",
+      "outputPath": "C:\\Users\\User\\Documents\\GitHub\\PasteCode\\Paste\\Paste\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

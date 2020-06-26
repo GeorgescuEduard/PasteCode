@@ -28,7 +28,7 @@ namespace Paste.Controllers
         public int GetFileCount()
         {
             string userId = User.Claims.First(c => c.Type == "UserID").Value;
-            return _context.File.Count(w => w.UserId == userId && w.ExpirationDate > DateTime.Now);
+            return _context.File.Count(w => w.UserId == userId && (w.ExpirationDate > DateTime.Now || w.ExpirationDate == null));
 
         }
 
