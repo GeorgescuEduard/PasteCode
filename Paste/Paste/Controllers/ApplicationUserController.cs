@@ -15,6 +15,7 @@ using MailKit.Net.Smtp;
 using MailKit;
 using MimeKit;
 using Paste.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Paste.Controllers
 {
@@ -85,6 +86,55 @@ namespace Paste.Controllers
                 }
 
                 return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPut]
+        [Route("UpdateDetails")]
+        //api/ApplicationUser/UpdateDetails
+
+        public async Task<Object> PutApplicationUserDetails(UserAccountModel model)
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);  
+
+            user.UserName = model.UserName;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
+
+            try
+            {
+                var result = await _userManager.UpdateAsync(user);
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        [HttpPut]
+        [Route("UpdatePassword")]
+        //api/ApplicationUser/UpdatePassword
+
+        public async Task<Object> PutApplicationUserPassword(UserAccountModel model)
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.Password);
+
+            try
+            {
+                var result = await _userManager.UpdateAsync(user);
+
+                return result;
 
             }
             catch (Exception ex)

@@ -64,8 +64,10 @@ namespace Paste
             });
 
             services.AddCors();
-            
 
+            services.AddIdentity<string, object>(options => {
+                options.ClaimsIdentity.UserIdClaimType = "UserID";
+            });
 
             //JSON
 

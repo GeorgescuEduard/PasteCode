@@ -94,6 +94,20 @@ export class UserService {
 
 
     });
+    updateModel = this.fb.group({
+        FirstName: ['', [Validators.required, Validators.minLength(2)]],
+        LastName: ['', [Validators.required, Validators.minLength(2)]],
+        UserName: ['', [Validators.required, Validators.minLength(6), Validators.pattern("^[a-zA-Z][a-zA-Z0-9._]*[a-zA-Z0-9]$")]],
+        Email: ['', [Validators.email, Validators.required, Validators.pattern("^[a-zA-Z0-9._@]*$")]],
+        PhoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]*$"), Validators.maxLength(14)]],
+    });
+
+    passwordsModel = this.fb.group({
+        Passwords: this.fb.group({
+            Password: ['', [Validators.required, Validators.minLength(6)]],
+            ConfirmPassword: ['', Validators.required]
+        }, { validator: this.comparePasswords })
+    });
 
     getDateTime() {
         var today = new Date();
@@ -176,9 +190,32 @@ export class UserService {
         return this.http.post(this.BaseURL + '/ApplicationUser/Register', body);
     }
 
+    updateDetails() {
+        var update = {
+
+            FirstName: this.updateModel.value.FirstName,
+            LastName: this.updateModel.value.LastName,
+            UserName: this.updateModel.value.UserName,
+            Email: this.updateModel.value.Email,
+            PhoneNumber: this.updateModel.value.PhoneNumber,
+
+        };
+        return this.http.put(this.BaseURL + '/ApplicationUser/UpdateDetails', update);
+    }
+
+    updatePassword() {
+        var update = {
+
+            Password: this.passwordsModel.value.Passwords.Password
+
+        };
+        return this.http.put(this.BaseURL + '/ApplicationUser/UpdatePassword', update);
+    }
+
     login(form) {
         return this.http.post(this.BaseURL + '/ApplicationUser/Login', form);
     }
+    
     getUserProfile() {
         return this.http.get(this.BaseURL + '/UserProfile');
     }
@@ -475,7 +512,6 @@ export class UserService {
     onRegisterRedirect() {
         this.router.navigate(['user/registration']);
     }
-
     
     getVersions(file) {
         this.http.get(this.BaseURL + "/Version?FileId=" + file).toPromise()

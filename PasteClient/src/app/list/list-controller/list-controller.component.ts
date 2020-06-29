@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListControllerComponent implements OnInit {
 
-  token:string;
+  token: string;
 
   constructor(
     private service: UserService,
@@ -21,13 +21,16 @@ export class ListControllerComponent implements OnInit {
     this.token = localStorage.getItem('token');
   }
 
-  navigateToNew(){
+  navigateToNew() {
     this.router.navigate(['/new']);
   }
-  navigateToTest(){
+  navigateToTest() {
     this.router.navigate(['/share']);
   }
   navigateToHome() {
     this.router.navigate(['home']);
-}
+  }
+  navigateToAccount() {
+    this.router.navigate(['account']);
+  }
 }

@@ -19,6 +19,7 @@ import { RawShareResolver } from './shared/resolvers/rawshare.service';
 import { RawShareComponent } from './list/rawshare/rawshare.component';
 import { FileResolver } from './shared/resolvers/file.service';
 import { RawResolver } from './shared/resolvers/raw.service';
+import { AccountComponent } from './list/account/account.component';
 
 
 export const routes: Routes = [
@@ -32,6 +33,7 @@ export const routes: Routes = [
 
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {path: 'account', component:AccountComponent, canActivate: [AuthGuard]},
 
   { path: 'view/:file',
    component: ViewComponent,

@@ -9,7 +9,12 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(public service: UserService, private toastr: ToastrService) { }
+  constructor(
+
+    public service: UserService,
+    private toastr: ToastrService
+    
+     ) { }
 
   ngOnInit() {
     this.service.formModel.reset();

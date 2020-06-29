@@ -37,7 +37,8 @@ namespace Paste.Controllers
                 user.LastName,
                 user.UserName,
                 user.Email,
-                user.PhoneNumber
+                user.PhoneNumber,
+                user.PasswordHash
 
             };
         }

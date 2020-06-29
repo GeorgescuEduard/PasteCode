@@ -35,6 +35,8 @@ import { FileResolver } from './shared/resolvers/file.service';
 import { RawResolver } from './shared/resolvers/raw.service';
 import * as $ from 'jquery';
 import { FooterComponent } from './footer/footer.component';
+import { AccountComponent } from './list/account/account.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { FooterComponent } from './footer/footer.component';
     ViewShareComponent,
     NewComponent,
     RawShareComponent,
-    FooterComponent
+    FooterComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

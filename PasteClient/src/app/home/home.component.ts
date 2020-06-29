@@ -8,22 +8,12 @@ import { UserService } from '../shared/user.service';
   styles: []
 })
 export class HomeComponent implements OnInit {
-  userDetails;
-
-
+  
   constructor(
     private service: UserService,
     ) { }
 
   ngOnInit() {
-    this.service.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
-      },
-      err => {
-        console.log(err);
-      }
-    );
   }
 
 }

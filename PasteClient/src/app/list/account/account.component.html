@@ -1,0 +1,106 @@
+<app-list-controller></app-list-controller>
+<div class="container" style="margin-top: 60px;">
+    <h3 class="login-heading mb-4">Manage your account details</h3>
+    <form [formGroup]="service.updateModel" autocomplete="off" *ngIf="userDetails" (submit)="onSubmitUpdate()">
+        <div class="row">
+            <div class="input-group">
+                <div class="col-6">
+                    <div class="form-label-group">
+                        <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="Frist name"
+                            formControlName="FirstName">
+                        <label for="FirstName">First name</label>
+                        <label class="text-danger"
+                            *ngIf="service.updateModel.get('FirstName').touched && service.updateModel.get('FirstName').errors?.minlength">First
+                            name to short.</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-label-group">
+                        <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last name"
+                            formControlName="LastName">
+                        <label for="LastName">Last name</label>
+                        <label class="text-danger"
+                            *ngIf="service.updateModel.get('LastName').touched && service.updateModel.get('LastName').errors?.minlength">Last
+                            name to short.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-label-group">
+            <input type="text" class="form-control" id="UserName" name="UserName" formControlName="UserName"
+                placeholder="Username" required>
+
+            <label for="UserName">Username</label>
+
+            <label for="UserName" class="text-danger"
+                *ngIf="service.updateModel.get('UserName').touched && service.updateModel.get('UserName').errors?.minlength">Username
+                to short.</label>
+            <label for="UserName" class="text-danger"
+                *ngIf="service.updateModel.get('UserName').touched && service.updateModel.get('UserName').errors?.pattern && !service.updateModel.get('UserName').errors?.minlength">
+                Username is invalid.</label>
+
+        </div>
+        <div class="form-label-group">
+            <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" formControlName="Email"
+                required>
+            <label for="Email">Email</label>
+            <label class="text-danger"
+                *ngIf="service.updateModel.get('Email').touched && service.updateModel.get('Email').errors?.email">
+                Email is invalid.</label>
+            <label class="text-danger"
+                *ngIf="service.updateModel.get('Email').touched && service.updateModel.get('Email').errors?.pattern">
+                Email is invalid.</label>
+        </div>
+
+        <div class="form-label-group">
+            <input (keypress)="this.service.numberOnly($event)" type="text" class="form-control" id="PhoneNumber"
+                name="PhoneNumber" placeholder="Phone number" formControlName="PhoneNumber" minlength="10"
+                maxlength="16" required>
+            <label for="PhoneNumber">Phone number</label>
+        </div>
+        <button type="submit" [disabled]="!service.updateModel.valid"
+            class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Update</button>
+    </form>
+
+    <h3 class="login-heading mt-4 mb-4">Manage password</h3>
+    <form [formGroup]="service.passwordsModel" autocomplete="off" (submit)="onSubmitUpdatePassword()">
+        <div formGroupName="Passwords">
+            <div class="form-label-group">
+                <input type="password" class="form-control" id="Password" name="Password" placeholder="Password"
+                    formControlName="Password" required>
+                <label for="Password">Password</label>
+                <label class="text-danger"
+                    *ngIf="service.passwordsModel.get('Passwords.Password').touched && service.passwordsModel.get('Passwords.Password').errors?.minlength">
+                    Password is to short.</label>
+            </div>
+            <div class="form-label-group">
+                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword"
+                    placeholder="Confirm password" formControlName="ConfirmPassword" required>
+                <label for="ConfirmPassword">Confirm password</label>
+                <label class="text-danger"
+                    *ngIf="service.passwordsModel.get('Passwords.ConfirmPassword').touched && service.passwordsModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm
+                    password
+                    doesn't match.</label>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!service.passwordsModel.valid"
+            class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Update Password</button>
+    </form>
+</div>
+
+<div class="row">
+  <div class="col-2" style="padding-left: 0; padding-right: 0;">
+    <div class="card " *ngIf="userDetails" style="height: 100%;">
+      <ul class="list-group text-center">
+        <li class="list-group-item "><strong>First name : </strong>{{userDetails.FirstName}}</li>
+        <li class="list-group-item "><strong>Last name : </strong>{{userDetails.LastName}}</li>
+        <li class="list-group-item "><strong>Username : </strong>{{userDetails.UserName}}</li>
+        <li class="list-group-item "><strong>Email : </strong>{{userDetails.Email}}</li>
+        <li class="list-group-item "><strong>Phone number : </strong>{{userDetails.PhoneNumber}}</li>
+        <li class="list-group-item "><strong>Password : </strong>{{userDetails.PasswordHash}}</li>
+      </ul>
+      <button class="btn btn-danger my-2 my-sm-0" (click)="this.service.onLogout()">Logout</button>
+    </div>-->
+  </div>
+</div>
+<app-footer></app-footer>
