@@ -364,6 +364,8 @@ export class UserService {
             document.querySelector(".modal-backdrop.fade.show").remove();
         }
         else {*/
+            console.log(this.formData.Content);
+            console.log(this.UpdateContentVerificator.Content);
         if (this.UpdateContentVerificator.Content != this.formData.Content) {
             this.putFile().subscribe(
                 res => {
@@ -507,7 +509,7 @@ export class UserService {
     }
 
     onRedirect() {
-        this.router.navigate(['/edit']);
+        window.location.href = this.local + 'edit/' + this.formData.FileId;
     }
 
     onLoginRedirect() {
@@ -518,10 +520,8 @@ export class UserService {
         this.router.navigate(['user/registration']);
     }
     
-    getVersions(file) {
-        this.http.get(this.BaseURL + "/Version?FileId=" + file).toPromise()
-            .then(res => this.VersionList = res as VersionModel[]);
-        this.router.navigate(['/version-view']);
+    getVersions() {
+        window.location.href = this.local + 'version-view/' + this.formData.FileId;
     }
 
     onDelete(FileId) {
@@ -551,16 +551,18 @@ export class UserService {
         }
     }
 
-    restoreVersion(version: VersionModel) {
+    restoreVersion() {
+        
         this.formData = {
             FileId: this.Version.FileId,
-            Name: this.formData.Name,
+            Name: this.Version.Name,
             Description: this.Version.Description,
             Syntax: this.Version.Syntax,
-            ExpirationDate: this.formData.ExpirationDate,
+            ExpirationDate: null,
             LastModified: this.Version.Date,
             Content: this.Version.Content
         }
+        console.log(this.formData);
         this.updateRecord();
     }
 }

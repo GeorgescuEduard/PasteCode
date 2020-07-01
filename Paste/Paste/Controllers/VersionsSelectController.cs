@@ -14,29 +14,23 @@ namespace Paste.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VersionController : ControllerBase
+    public class VersionsSelectController : ControllerBase
     {
         private readonly DBContext _context;
 
-        public VersionController(DBContext context)
+        public VersionsSelectController(DBContext context)
         {
             _context = context;
         }
 
         // GET: api/Version
-  
-        [HttpGet("{file}")]
-        public async Task<ActionResult<IEnumerable<Version>>> GetVersion(int file)
-        {
-            return await _context.Version.Where(t => t.FileId == file).OrderByDescending(a => a.Date).ToListAsync();
-        }
 
-        [HttpGet]
-        [Route("Select")]
+
+        [HttpGet("{file}")]
         public ActionResult<Version> GetSelectVersion(int file)
         {
-            return _context.Version.FirstOrDefault(t => t.Id == file);
-            
+            return _context.Version.FirstOrDefault(t => t.FileId == file);
+
         }
 
         // PUT: api/Version/5

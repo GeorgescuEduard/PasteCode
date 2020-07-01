@@ -29,8 +29,8 @@ export class ViewComponent implements OnInit {
       this.formData = data.file as FileModel;
       this.service.formData = this.formData;
       this.language = this.formData.Syntax;
-      if(this.language == ""){
-        this.language = "plaintext";
+      if(this.language == "Typescript"){
+        this.language = "c";
       }
       this.service.revision();
     });

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/shared/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import hljs from 'highlight.js';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { VersionModel } from '../../shared/version-model';
@@ -14,20 +14,27 @@ import { VersionModel } from '../../shared/version-model';
 })
 export class VersionViewComponent implements OnInit {
   config: any;
+  versionData: VersionModel[];
 
   constructor(
     private service: UserService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   
   ) {}
 
   ngOnInit() {
-    hljs.initHighlightingOnLoad();
-  }
+    console.log('Component initialized');
+    this.route.data.subscribe(
+      (data: { file: VersionModel[] }) => {
+          this.versionData = data.file as VersionModel[];
+          this.service.VersionList = this.versionData;
+          console.log(this.versionData);
+        });
+    }
 
   populateForm(version: VersionModel) {
-    this.service.Version = Object.assign({}, version);
-    this.router.navigate(["/view-selected-version"]);
+    window.location.href = this.service.local + 'view-selected-version/' + version.Id;
   }
 }

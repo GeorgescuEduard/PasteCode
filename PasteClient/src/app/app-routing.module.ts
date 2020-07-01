@@ -11,7 +11,6 @@ import { RawComponent } from './list/raw/raw.component';
 import { VersionViewComponent } from './versions/version-view/version-view.component';
 import { ViewSelectedVersionComponent } from './versions/view-selected-version/view-selected-version.component';
 import { FileShareComponent } from './fileshare/fileshare.component';
-import { ViewShareComponent } from './viewshare/viewshare.component';
 import { NewComponent } from './list/new/new.component';
 import { UserService } from './shared/user.service';
 import { FileShareResolver } from './shared/resolvers/fileshare.service';
@@ -20,6 +19,8 @@ import { RawShareComponent } from './list/rawshare/rawshare.component';
 import { FileResolver } from './shared/resolvers/file.service';
 import { RawResolver } from './shared/resolvers/raw.service';
 import { AccountComponent } from './list/account/account.component';
+import { VersionListResolver } from './shared/resolvers/version-list.service';
+import { SelectedVersionResolver } from './shared/resolvers/selected-version.service';
 
 
 export const routes: Routes = [
@@ -30,46 +31,17 @@ export const routes: Routes = [
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent }
     ]
-
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  {path: 'account', component:AccountComponent, canActivate: [AuthGuard]},
-
-  { path: 'view/:file',
-   component: ViewComponent,
-   resolve: {
-     file: FileResolver
-   },
-    canActivate: [AuthGuard] },
-
-  { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
-
-  { path: 'raw/:file',
-   component: RawComponent,
-   resolve: {
-     file: RawResolver
-   },
-    canActivate: [AuthGuard] },
-
-  { path: 'version-view', component: VersionViewComponent, canActivate: [AuthGuard] },
-  { path: 'view-selected-version', component: ViewSelectedVersionComponent, canActivate: [AuthGuard] },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
+  { path: 'view/:file', component: ViewComponent, resolve: {file: FileResolver}, canActivate: [AuthGuard] },
+  { path: 'edit/:file', component: EditComponent, resolve: {file: FileResolver}, canActivate: [AuthGuard] },
+  { path: 'raw/:file', component: RawComponent, resolve: { file: RawResolver }, canActivate: [AuthGuard] },
+  { path: 'version-view/:file', component: VersionViewComponent, resolve:{ file: VersionListResolver}, canActivate: [AuthGuard] },
+  { path: 'view-selected-version/:file', component: ViewSelectedVersionComponent, resolve:{file: SelectedVersionResolver}, canActivate: [AuthGuard] },
   { path: 'new', component: NewComponent, canActivate: [AuthGuard] },
-  { path: 'share', component: ViewShareComponent},
-  { 
-    path: 'shared/:file',
-    component: FileShareComponent,
-    resolve: {
-      shared: FileShareResolver
-    }
-  },
-  { 
-    path: 'rawshare/:file',
-    component: RawShareComponent,
-    resolve: {
-      shared: RawShareResolver
-    }
-  }
-  
+  { path: 'shared/:file', component: FileShareComponent, resolve: { shared: FileShareResolver } },
+  { path: 'rawshare/:file', component: RawShareComponent, resolve: { shared: RawShareResolver } }
 ]
 
 @NgModule({

@@ -89,7 +89,7 @@ namespace Paste.Controllers
         public async Task<ActionResult<IEnumerable<File>>> SearchAction(string search)
         {
             string userId = User.Claims.First(c => c.Type == "UserID").Value;
-            return await _context.File.Where(t => t.Name.Contains(search) && t.UserId == userId).ToListAsync();
+            return await _context.File.Where(t => t.Name.Contains(search) || t.Syntax.Contains(search) && t.UserId == userId).ToListAsync();
 
         }
 

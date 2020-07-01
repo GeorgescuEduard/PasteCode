@@ -72,7 +72,6 @@ C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\bin\Debug\netcoreapp2.2\Pas
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\bin\Debug\netcoreapp2.2\Paste.runtimeconfig.dev.json
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\bin\Debug\netcoreapp2.2\Paste.dll
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\bin\Debug\netcoreapp2.2\Paste.pdb
-C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.AssemblyInfoInputs.cache
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.AssemblyInfo.cs
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.RazorAssemblyInfo.cache
@@ -82,3 +81,6 @@ C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Pas
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.pdb
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.genruntimeconfig.cache
 C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\obj\Debug\netcoreapp2.2\Paste.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\bin\Debug\netcoreapp2.2\Properties\serviceDependencies.json
+C:\Users\User\Documents\GitHub\PasteCode\Paste\Paste\bin\Debug\netcoreapp2.2\Properties\serviceDependencies.local.json

@@ -25,7 +25,6 @@ import { HighlightModule } from 'ngx-highlightjs';
 import Prism from 'prismjs';
 import { FileShareComponent } from './fileshare/fileshare.component';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, RouterModule } from '@angular/router';
-import { ViewShareComponent } from './viewshare/viewshare.component';
 import { NewComponent } from './list/new/new.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FileShareResolver } from './shared/resolvers/fileshare.service';
@@ -36,6 +35,8 @@ import { RawResolver } from './shared/resolvers/raw.service';
 import * as $ from 'jquery';
 import { FooterComponent } from './footer/footer.component';
 import { AccountComponent } from './list/account/account.component';
+import { VersionListResolver } from './shared/resolvers/version-list.service';
+import { SelectedVersionResolver } from './shared/resolvers/selected-version.service';
 
 
 @NgModule({
@@ -54,7 +55,6 @@ import { AccountComponent } from './list/account/account.component';
     VersionViewComponent,
     ViewSelectedVersionComponent,
     FileShareComponent,
-    ViewShareComponent,
     NewComponent,
     RawShareComponent,
     FooterComponent,
@@ -78,6 +78,8 @@ providers: [
   RawShareResolver,
   FileResolver,
   RawResolver,
+  VersionListResolver,
+  SelectedVersionResolver,
   {
   provide: HTTP_INTERCEPTORS,
   useClass: AuthInterceptor,

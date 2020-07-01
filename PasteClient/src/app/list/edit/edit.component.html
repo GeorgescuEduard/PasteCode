@@ -2,27 +2,26 @@
 <div class="container" style="margin-top: 70px;">
     <h4>Edit File</h4>
     <form #form="ngForm" autocomplete="off" (submit)="this.service.updateRecord(form)" style="margin-top: 20px;">
-        <input type="hidden" name="UserId" [value]="service.formData.UserId">
-        <input type="hidden" name="FileId" [value]="service.formData.FileId">
+        <input type="hidden" name="FileId" [value]="formData.FileId">
         <div class="form-group">
             <p style="margin-bottom: 5px;"><b>File Name</b></p>
             <div class="input-group">
 
-                <input type="text" name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" class="form-control"
+                <input type="text" name="Name" #Name="ngModel" [(ngModel)]="formData.Name" class="form-control"
                     placeholder="Name" required>
             </div>
         </div>
         <p><b>Description</b></p>
         <div class="form-group">
             <div class="input-group">
-                <input type="text" name="Description" #Description="ngModel" [(ngModel)]="service.formData.Description"
+                <input type="text" name="Description" #Description="ngModel" [(ngModel)]="formData.Description"
                     class="form-control" placeholder="Description">
             </div>
         </div>
         <p><b>Sytax</b></p>
         <div class="form-group">
             <div class="input-group">
-                <select name="Syntax" #Syntax="ngModel" [(ngModel)]="service.formData.Syntax" class="form-control">
+                <select name="Syntax" #Syntax="ngModel" [(ngModel)]="formData.Syntax" class="form-control">
                     <option value="" disabled selected hidden>Select syntax:</option>
                     <option value="">None</option>
                     <option value="1" disabled="disabled">------ POPULAR LANGUAGES -------</option>
@@ -225,7 +224,7 @@
         <div class="form-group">
             <div class="input-group">
                 <textarea style="resize: none;" class='autoExpand' rows="30" cols="50" name="Content" #Content="ngModel"
-                    [(ngModel)]="service.formData.Content" class="form-control" placeholder="" required></textarea>
+                    [(ngModel)]="formData.Content" class="form-control" placeholder="" required></textarea>
             </div>
         </div>
         <div class="form-group text-center mt-4">

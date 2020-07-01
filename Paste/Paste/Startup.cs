@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Paste.Models;
+using Paste.Data;
 
 namespace Paste
 {
@@ -91,6 +92,9 @@ namespace Paste
                 };
 
             });
+
+            services.AddDbContext<PasteContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("PasteContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
