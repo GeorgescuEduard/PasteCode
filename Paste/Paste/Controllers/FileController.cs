@@ -74,12 +74,22 @@ namespace Paste.Controllers
             return _context.File.Where(t => t.FileId == fileid).ToString();
 
         }
+
         [HttpGet]
         [Route("FindBySyntax")]
         public async Task<ActionResult<IEnumerable<File>>> SelectBySyntax(string syntax)
         {
             string userId = User.Claims.First(c => c.Type == "UserID").Value;
             return await _context.File.Where(t => t.Syntax == syntax && t.UserId == userId).ToListAsync();
+
+        }
+
+        [HttpGet]
+        [Route("Search")]
+        public async Task<ActionResult<IEnumerable<File>>> SearchAction(string search)
+        {
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+            return await _context.File.Where(t => t.Name.Contains(search) && t.UserId == userId).ToListAsync();
 
         }
 

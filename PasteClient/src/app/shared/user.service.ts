@@ -11,6 +11,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Observable } from 'rxjs/internal/Observable';
 import { tap, take } from 'rxjs/operators';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchModel } from './search-model.model';
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +19,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class UserService {
     config: any;
     formData: FileModel;
+    searchFilter:SearchModel;
+
     readonly BaseURL = 'http://localhost:53357/api';
     list: FileModel[];
     sharedList: ShareModel[];
@@ -216,10 +219,6 @@ export class UserService {
 
     login(form) {
         return this.http.post(this.BaseURL + '/ApplicationUser/Login', form);
-    }
-    
-    searchAction() {
-        return this.http.get(this.BaseURL + '/File' + this.search);
     }
 
     getUserProfile() {

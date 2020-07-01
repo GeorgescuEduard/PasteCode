@@ -1,12 +1,12 @@
 <app-list-controller></app-list-controller>
 <div class="row mb-2" style="margin-top: 60px; justify-content: center;">
   <div class="input-group col-2">
-    <input type="text" name="Search" style="width: 100%; box-shadow: none;
+    <input type="text" name="Search" id="Search" style="width: 100%; box-shadow: none; 
     border: none;
     border-bottom: 2px solid rgb(103,107,112);
-    border-radius: 0px" class="form-control" placeholder="Search" required>
+    border-radius: 0px" class="form-control"  placeholder="Search" required>
   </div>
-  <button (click)="this.service.searchAction()" class="btn btn-success my-2 my-sm-0" style="color: white;" type="submit"><i style="color: white;" class="fas fa-plus"></i> New File</button>
+  <button (click)="this.searchAction()" class="btn my-2 my-sm-0" style="color: white;" type="submit"><i style="color:black;" class="fas fa-search fa-lg"></i></button>
 </div>
 <table class="table mb-5">
   <thead>
