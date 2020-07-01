@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/shared/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Compiler } from '@angular/core';
 import hljs from 'highlight.js';
 
 @Component({
@@ -17,22 +18,25 @@ export class ViewComponent implements OnInit {
 
   constructor(
     private service: UserService,
-    private http: HttpClient,
-    private router: Router,
     private route: ActivatedRoute,
+    private _compiler: Compiler
 
   ) { }
 
   ngOnInit() {
-    hljs.initHighlightingOnLoad();
     console.log('Component initialized');
     this.route.data.subscribe((data: { file: any }) => {
       this.formData = data.file as FileModel;
       this.service.formData = this.formData;
-      console.log(this.service.formData);
       this.language = this.formData.Syntax;
-      hljs.configure({ languages: [this.language] });
+      if(this.language == ""){
+        this.language = "plaintext";
+      }
       this.service.revision();
+    });
+    $(document).ready(function() {
+      hljs.initHighlighting();
+      hljs.configure({ languages: [this.language] });
     });
   }
 

@@ -23,14 +23,16 @@ language: string;
   ) {}
 
   ngOnInit() {
-    hljs.initHighlightingOnLoad();
     console.log('Component initialized');
     this.route.data.subscribe((data: { shared: any }) => {
       this.formData = data.shared as ShareModel;
       this.service.rawContent = this.formData.Content;
       this.language = this.formData.Syntax;
-      hljs.initHighlightingOnLoad();
-      hljs.configure({languages: [this.language]});
+    });
+    
+    $(document).ready(function() {
+      hljs.initHighlighting();
+      hljs.configure({ languages: [this.language] });
     });
   }
 

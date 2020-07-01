@@ -16,7 +16,6 @@ export class FileResolver implements Resolve<any> {
     local = 'http://localhost:4200/';
     formData: FileModel;
     language:string;
-    Auth: string;
 
     constructor(
         private http: HttpClient,
@@ -27,5 +26,6 @@ export class FileResolver implements Resolve<any> {
                 this.formData = res as FileModel;
             }
             ));
+
     }
 }

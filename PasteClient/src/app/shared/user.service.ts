@@ -27,6 +27,8 @@ export class UserService {
     userName: string;
     Email: string;
 
+    search:string;
+
     rawContent: string;
     codec: string;
 
@@ -216,6 +218,10 @@ export class UserService {
         return this.http.post(this.BaseURL + '/ApplicationUser/Login', form);
     }
     
+    searchAction() {
+        return this.http.get(this.BaseURL + '/File' + this.search);
+    }
+
     getUserProfile() {
         return this.http.get(this.BaseURL + '/UserProfile');
     }
